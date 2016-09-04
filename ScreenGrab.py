@@ -1,5 +1,7 @@
+import serial
 from PIL import ImageGrab
 import turtle
+import time
 screenHeight = 1080
 screenWidth = 1920
 skip = 10
@@ -13,7 +15,17 @@ for y in range(0, screenHeight, skip):
         red += color[0]
         green += color[1]
         blue += color[2]
-averageColor = str(red/screenArea) + ", " + str(green/screenArea) +", " + str(blue/screenArea)
+averageColor = str(red/screenArea) + "," + str(green/screenArea) +"," + str(blue/screenArea)
+print averageColor
+#ser = serial.Serial('/dev/tty.usbserial', 9600)
+serialport = "COM5"
+ser = serial.Serial(serialport, 9600)
+#while(1):
+ #   val=ser.readline().decode( 'ascii' ).strip()
+  #  print (val)
+while(1):
+    ser.write(averageColor)
+    time.sleep(5)
 def visualizeColor():
 
     turtle.colormode(255)
