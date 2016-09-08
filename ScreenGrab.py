@@ -1,6 +1,6 @@
 import serial
 from PIL import ImageGrab
-import turtle
+#import turtle
 import time
 screenHeight = 1080
 screenWidth = 1920
@@ -23,7 +23,7 @@ while(1):
     blue = blue/screenArea
 
     averageColor = str(red) + "," + str(green) +"," + str(blue)
-    print averageColor
+    #print averageColor
     #ser = serial.Serial('/dev/tty.usbserial', 9600)
 
     #while(1):
@@ -36,14 +36,18 @@ while(1):
         green = 0
     if(red < 128):
         red = 0
-    ser.write(str(red)+"r")
+    print averageColor
+    ser.write(str(red)+","+str(green)+","+str(blue))
+    #ser.write(averageColor)
+    '''ser.write(str(red)+"r")
     #print str(red)
-    time.sleep(2)
+    time.sleep(1)
     ser.write(str(green)+"g")
-    time.sleep(2)
+    time.sleep(1)
     ser.write(str(blue)+"b")
-    time.sleep(2)
-    def visualizeColor():
+    time.sleep(1)'''
+    time.sleep(0.11)
+    '''def visualizeColor():
 
         turtle.colormode(255)
         turtle.penup()
@@ -61,4 +65,4 @@ while(1):
         turtle.color(red/screenArea, green/screenArea, blue/screenArea)
         turtle.end_fill()
         turtle.done()
-   # visualizeColor()
+   # visualizeColor()'''
